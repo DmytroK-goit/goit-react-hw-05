@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { surchMovie } from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-react-hw-05/src/components/api/api";
-import { Form } from "react-router-dom";
+import Movies from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-react-hw-05/src/components/Movies/Movies";
+import { useNavigate, Link } from "react-router-dom";
 const MoviesPage = () => {
-  const [surchMovies, setSurchMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState([]);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate;
 
   const handleInputChange = (evt) => {
     setQuery(evt.target.value);
@@ -19,8 +21,8 @@ const MoviesPage = () => {
 
     try {
       const data = await surchMovie(query);
-      setSurchMovies(data.results);
-      console.log(surchMovies);
+      setSearchMovies(data.results);
+      console.log(searchMovies);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -38,10 +40,14 @@ const MoviesPage = () => {
         <button type="submit">Search</button>
       </form>
 
-      {surchMovies.length > 0 && (
+      {searchMovies.length > 0 && (
         <ul>
-          {surchMovies.map((movie) => (
-            <li key={movie.id}>{movie.overview}</li>
+          {searchMovies.map((movie) => (
+            <li key={movie.id}>
+              <Link to={movie.id.toString()}>
+                <p>{movie.original_title}</p>
+              </Link>
+            </li>
           ))}
         </ul>
       )}
