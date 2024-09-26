@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { surchMovie } from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-react-hw-05/src/components/api/api";
-import Movies from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-react-hw-05/src/components/Movies/Movies";
 import { useNavigate, Link } from "react-router-dom";
+
 const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [query, setQuery] = useState("");
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleInputChange = (evt) => {
     setQuery(evt.target.value);
@@ -22,7 +22,6 @@ const MoviesPage = () => {
     try {
       const data = await surchMovie(query);
       setSearchMovies(data.results);
-      console.log(searchMovies);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -44,7 +43,7 @@ const MoviesPage = () => {
         <ul>
           {searchMovies.map((movie) => (
             <li key={movie.id}>
-              <Link to={movie.id.toString()}>
+              <Link to={`/movies/${movie.id}`}>
                 <p>{movie.original_title}</p>
               </Link>
             </li>
