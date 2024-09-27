@@ -18,7 +18,6 @@ const MovieDetailsPage = () => {
       try {
         const dataDetails = await getMovieDetails(movieId);
         setMovieDetails(dataDetails);
-        // toast.success(`Успішно виконано!`);
       } catch (error) {
         toast.error(`Сталася помилка: ${error.message}`);
       }
@@ -28,7 +27,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   if (!movieDetails) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   return (

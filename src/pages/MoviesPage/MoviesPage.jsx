@@ -3,9 +3,11 @@ import { surchMovie } from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-rea
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingSpinner from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-react-hw-05/src/components/LoadingSpinner/LoadingSpinner";
 
 const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,11 +40,13 @@ const MoviesPage = () => {
 
   const fetchMovies = async (searchQuery) => {
     try {
+      setLoading(true);
       const data = await surchMovie(searchQuery);
       setSearchMovies(data.results);
-      // toast.success(`Успішно виконано!`);
     } catch (error) {
       toast.error(`Сталася помилка: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,16 +62,20 @@ const MoviesPage = () => {
         <button type="submit">Search</button>
       </form>
 
-      {searchMovies.length > 0 && (
-        <ul>
-          {searchMovies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                <p>{movie.original_title}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        searchMovies.length > 0 && (
+          <ul>
+            {searchMovies.map((movie) => (
+              <li key={movie.id}>
+                <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                  <p>{movie.original_title}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )
       )}
       <ToastContainer
         position="top-right"
