@@ -48,4 +48,19 @@ const getMovieDetails = async (movieId) => {
     throw error;
   }
 };
-export { fetchTrending, surchMovie, getMovieDetails };
+
+const getMovieCredits = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `movie/${movieId}/credits?language=en-US'`,
+      options
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
+export { fetchTrending, surchMovie, getMovieDetails, getMovieCredits };

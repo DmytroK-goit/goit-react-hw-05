@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { getMovieDetails } from "../../components/api/api";
+import { getMovieDetails, getMovieCredits } from "../../components/api/api";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
@@ -10,6 +10,7 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const [movieCredits, setmovieCredits] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || "/";
@@ -25,6 +26,20 @@ const MovieDetailsPage = () => {
     };
 
     fetchMovieDetails();
+  }, [movieId]);
+
+  useEffect(() => {
+    const fetchMovieCredits = async () => {
+      try {
+        const dataDetails = await getMovieCredits(movieId);
+        setmovieCredits(dataDetails);
+        console.log(movieCredits);
+      } catch (error) {
+        toast.error(`Сталася помилка: ${error.message}`);
+      }
+    };
+
+    fetchMovieCredits();
   }, [movieId]);
 
   if (!movieDetails) {
