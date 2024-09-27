@@ -31,9 +31,9 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
-        const dataDetails = await getMovieCredits(movieId);
-        setmovieCredits(dataDetails);
-        console.log(movieCredits);
+        const dataCredits = await getMovieCredits(movieId);
+        setmovieCredits(dataCredits);
+        console.log(dataCredits);
       } catch (error) {
         toast.error(`Сталася помилка: ${error.message}`);
       }
