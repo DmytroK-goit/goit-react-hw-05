@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchTrending } from "/Users/dmytro.kovbasiuk/Desktop/HTML/EDU JS/goit-react-hw-05/src/components/api/api";
+import { fetchTrending } from "../../components/api/api";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
