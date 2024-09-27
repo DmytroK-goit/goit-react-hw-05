@@ -4,6 +4,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import s from "../MoviesPage/MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);

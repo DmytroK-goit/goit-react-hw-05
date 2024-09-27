@@ -1,0 +1,33 @@
+li {
+    list-style: none;
+}
+
+.allinfo {
+    margin: 10px 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.fblock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fblock button {
+    width: 100px;
+    border: 1px solid black;
+}
+
+.sblock {
+    width: 500px;
+}
+
+.title {
+    font-weight: 900;
+}
+
+.ganres {
+    display: flex;
+    gap: 20px;
+}
