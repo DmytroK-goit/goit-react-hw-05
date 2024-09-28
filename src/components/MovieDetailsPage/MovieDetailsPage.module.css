@@ -48,3 +48,20 @@ li {
   font-size: medium;
   margin: 20px;
 }
+
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cast li {
+  border: 1px solid rgb(50, 105, 105);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+}
+.cast p {
+  font-weight: 900;
+  font-size: medium;
+}

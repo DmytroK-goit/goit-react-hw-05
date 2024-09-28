@@ -85,12 +85,11 @@ const MovieDetailsPage = () => {
       <div className={s.tblock}>
         <p className={s.title}>Additional Information</p>
 
-        {/* Лінк для показу/приховування Cast */}
         <Link
           to="#"
           onClick={(e) => {
-            e.preventDefault(); // Запобігаємо переходу
-            setShowCast((prev) => !prev); // Перемикаємо видимість списку акторів
+            e.preventDefault();
+            setShowCast((prev) => !prev);
           }}
         >
           {showCast ? "Hide Cast" : "Show Cast"}
@@ -99,17 +98,17 @@ const MovieDetailsPage = () => {
           Reviews
         </Link>
 
-        {/* Умовне рендерення списку акторів */}
         {showCast && movieCredits.length > 0 && (
-          <ul>
+          <ul className={s.cast}>
             {movieCredits.map((credit) => (
               <li key={credit.cast_id}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
-                  alt=""
+                  alt={credit.original_name}
                   width={200}
                 />
-                {credit.name} as {credit.character}
+                <p>{credit.original_name}</p>
+                <p>{credit.popularity}%</p>
               </li>
             ))}
           </ul>
