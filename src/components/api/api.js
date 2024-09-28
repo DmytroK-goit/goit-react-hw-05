@@ -55,8 +55,6 @@ const getMovieCredits = async (movieId) => {
       `movie/${movieId}/credits?language=en-US'`,
       options
     );
-    console.log(response);
-
     return response.data;
   } catch (error) {
     console.error("Error fetching trending movies:", error);

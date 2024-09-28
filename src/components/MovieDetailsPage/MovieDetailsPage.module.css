@@ -41,3 +41,10 @@ li {
   font-weight: 700;
   border-radius: 10px;
 }
+.tblock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: medium;
+  margin: 20px;
+}

@@ -10,7 +10,8 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [movieCredits, setmovieCredits] = useState(null);
+  const [movieCredits, setmovieCredits] = useState([]);
+  const [showCast, setShowCast] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,7 +34,7 @@ const MovieDetailsPage = () => {
     const fetchMovieCredits = async () => {
       try {
         const dataCredits = await getMovieCredits(movieId);
-        setmovieCredits(dataCredits);
+        setmovieCredits(dataCredits.cast);
         console.log(dataCredits);
       } catch (error) {
         toast.error(`Сталася помилка: ${error.message}`);
@@ -81,7 +82,39 @@ const MovieDetailsPage = () => {
           hideProgressBar={false}
         />
       </div>
-      <p className={s.title}>Additional Information</p>
+      <div className={s.tblock}>
+        <p className={s.title}>Additional Information</p>
+
+        {/* Лінк для показу/приховування Cast */}
+        <Link
+          to="#"
+          onClick={(e) => {
+            e.preventDefault(); // Запобігаємо переходу
+            setShowCast((prev) => !prev); // Перемикаємо видимість списку акторів
+          }}
+        >
+          {showCast ? "Hide Cast" : "Show Cast"}
+        </Link>
+        <Link to={`/movies/${movieId}/reviews`} state={{ from: location }}>
+          Reviews
+        </Link>
+
+        {/* Умовне рендерення списку акторів */}
+        {showCast && movieCredits.length > 0 && (
+          <ul>
+            {movieCredits.map((credit) => (
+              <li key={credit.cast_id}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
+                  alt=""
+                  width={200}
+                />
+                {credit.name} as {credit.character}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
