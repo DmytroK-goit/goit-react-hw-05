@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import { getMovieDetails, getMovieCredits } from "../../components/api/api";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +13,7 @@ const MovieDetailsPage = () => {
   const [movieCredits, setmovieCredits] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+
   const from = location.state?.from || "/";
 
   useEffect(() => {
@@ -50,7 +51,10 @@ const MovieDetailsPage = () => {
     <div>
       <div className={s.allinfo}>
         <div className={s.fblock}>
-          <button onClick={() => navigate(from)}>Назад</button>
+          <Link className={s.btn} to={from} state={location}>
+            Назад
+          </Link>
+
           <img
             src={`https://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path}`}
             alt=""
