@@ -13,7 +13,6 @@ const HomePage = () => {
       try {
         const data = await fetchTrending();
         setMovies(data.results);
-        console.log(movies);
       } catch (error) {
         toast.error(`Сталася помилка: ${error.message}`);
       }

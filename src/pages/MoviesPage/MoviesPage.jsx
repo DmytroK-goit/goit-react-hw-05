@@ -53,14 +53,17 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className={s.form} onSubmit={handleSubmit}>
         <input
+          className={s.input}
           type="text"
           placeholder="Search movies..."
           value={query}
           onChange={handleInputChange}
         />
-        <button type="submit">Search</button>
+        <button className={s.btn} type="submit">
+          Search
+        </button>
       </form>
 
       {loading ? (

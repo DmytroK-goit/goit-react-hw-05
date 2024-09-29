@@ -40,8 +40,6 @@ const getMovieDetails = async (movieId) => {
       `movie/${movieId}?language=en-US`,
       options
     );
-    console.log(response);
-
     return response.data;
   } catch (error) {
     console.error("Error fetching trending movies:", error);
