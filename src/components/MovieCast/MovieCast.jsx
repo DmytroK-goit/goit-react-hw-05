@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMovieCredits } from "../../components/api/api";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import s from "./MovieCast.module.css";
@@ -36,7 +36,7 @@ const MovieCast = ({ movieId }) => {
               <img
                 src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
                 alt={credit.original_name}
-                width={200}
+                width={300}
               />
               <p>{credit.original_name}</p>
               <p>{credit.popularity}%</p>

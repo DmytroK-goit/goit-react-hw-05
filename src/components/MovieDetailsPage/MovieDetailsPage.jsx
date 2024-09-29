@@ -32,12 +32,6 @@ const MovieDetailsPage = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  const toggleShowCast = () => {
-    setShowCast((prev) => !prev);
-  };
-  const toggleShowReview = () => {
-    setShowReview((prev) => !prev);
-  };
   if (!movieDetails) {
     return <LoadingSpinner />;
   }
@@ -70,11 +64,6 @@ const MovieDetailsPage = () => {
             ))}
           </ul>
         </div>{" "}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-        />
       </div>
       <div className={s.tblock}>
         <p className={s.title}>Additional Information</p>
@@ -102,6 +91,11 @@ const MovieDetailsPage = () => {
 
       {showCast && <MovieCast movieId={movieId} />}
       {showReview && <MovieReview movieId={movieId} />}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+      />
     </div>
   );
 };
