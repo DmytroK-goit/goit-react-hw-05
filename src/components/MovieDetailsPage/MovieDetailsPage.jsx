@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
-import { getMovieDetails, getMovieCredits } from "../../components/api/api";
+import { getMovieDetails } from "../../components/api/api";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import s from "../MovieDetailsPage/MovieDetailsPage.module.css";
+import MovieCast from "../../components/MovieCast/MovieCast";
+import MovieReview from "../MovieReviews/MovieReviews";
 
 const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [movieCredits, setmovieCredits] = useState([]);
   const [showCast, setShowCast] = useState(false);
+  const [showReview, setShowReview] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,20 +32,12 @@ const MovieDetailsPage = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  useEffect(() => {
-    const fetchMovieCredits = async () => {
-      try {
-        const dataCredits = await getMovieCredits(movieId);
-        setmovieCredits(dataCredits.cast);
-        console.log(dataCredits);
-      } catch (error) {
-        toast.error(`Сталася помилка: ${error.message}`);
-      }
-    };
-
-    fetchMovieCredits();
-  }, [movieId]);
-
+  const toggleShowCast = () => {
+    setShowCast((prev) => !prev);
+  };
+  const toggleShowReview = () => {
+    setShowReview((prev) => !prev);
+  };
   if (!movieDetails) {
     return <LoadingSpinner />;
   }
@@ -89,31 +83,25 @@ const MovieDetailsPage = () => {
           to="#"
           onClick={(e) => {
             e.preventDefault();
+            setShowReview((prev) => !prev);
+          }}
+        >
+          {showReview ? "Hide Reviews" : "Show Reviews"}
+        </Link>
+
+        <Link
+          to="#"
+          onClick={(e) => {
+            e.preventDefault();
             setShowCast((prev) => !prev);
           }}
         >
           {showCast ? "Hide Cast" : "Show Cast"}
         </Link>
-        <Link to={`/movies/${movieId}/reviews`} state={{ from: location }}>
-          Reviews
-        </Link>
-
-        {showCast && movieCredits.length > 0 && (
-          <ul className={s.cast}>
-            {movieCredits.map((credit) => (
-              <li key={credit.cast_id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
-                  alt={credit.original_name}
-                  width={200}
-                />
-                <p>{credit.original_name}</p>
-                <p>{credit.popularity}%</p>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
+
+      {showCast && <MovieCast movieId={movieId} />}
+      {showReview && <MovieReview movieId={movieId} />}
     </div>
   );
 };

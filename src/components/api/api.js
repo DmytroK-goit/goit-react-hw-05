@@ -21,7 +21,7 @@ const fetchTrending = async () => {
     throw error;
   }
 };
-const surchMovie = async (query) => {
+const searchMovie = async (query) => {
   try {
     const response = await axios.get(
       `search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
@@ -61,4 +61,23 @@ const getMovieCredits = async (movieId) => {
     throw error;
   }
 };
-export { fetchTrending, surchMovie, getMovieDetails, getMovieCredits };
+
+const getMovieReviews = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `movie/${movieId}/reviews?language=en-US'`,
+      options
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
+export {
+  fetchTrending,
+  searchMovie,
+  getMovieDetails,
+  getMovieReviews,
+  getMovieCredits,
+};

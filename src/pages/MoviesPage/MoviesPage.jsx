@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { surchMovie } from "../../components/api/api";
+import { searchMovie } from "../../components/api/api";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -42,7 +42,7 @@ const MoviesPage = () => {
   const fetchMovies = async (searchQuery) => {
     try {
       setLoading(true);
-      const data = await surchMovie(searchQuery);
+      const data = await searchMovie(searchQuery);
       setSearchMovies(data.results);
     } catch (error) {
       toast.error(`Сталася помилка: ${error.message}`);
