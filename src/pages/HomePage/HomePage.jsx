@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { fetchTrending } from "../../components/api/api";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
+const MovieList = lazy(() => import("../../components/MovieList/MovieList"));
+
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -23,15 +24,9 @@ const HomePage = () => {
 
   return (
     <div>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-              <p>{movie.original_title}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Suspense>
+        <MovieList movies={movies} location={location} />
+      </Suspense>
       <ToastContainer
         position="top-right"
         autoClose={5000}
