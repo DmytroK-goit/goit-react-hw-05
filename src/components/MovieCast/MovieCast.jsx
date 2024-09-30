@@ -3,13 +3,12 @@ import { getMovieCredits } from "../../components/api/api";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import s from "./MovieCast.module.css";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const MovieCast = () => {
   const [movieCredits, setMovieCredits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
-  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieCredits = async () => {
