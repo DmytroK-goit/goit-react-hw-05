@@ -1,11 +1,6 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { searchMovie } from "../api/api";
-import {
-  useNavigate,
-  Link,
-  useLocation,
-  useSearchParams,
-} from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
@@ -17,27 +12,21 @@ const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query") || "";
+  const [query, setQuery] = useState(searchParams.get("query") || "");
   const location = useLocation();
 
-  useEffect(() => {
-    if (query) {
-      fetchMovies(query);
-    }
-  }, [query]);
-
   const handleInputChange = (evt) => {
-    setSearchParams({ query: evt.target.value });
+    setQuery(evt.target.value);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     if (query.trim() === "") {
       toast.info("Пошуковий запит не введений");
       return;
     }
 
+    setSearchParams({ query });
     fetchMovies(query);
   };
 
@@ -80,6 +69,11 @@ const MoviesPage = () => {
           </Suspense>
         )
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+      />
     </div>
   );
 };

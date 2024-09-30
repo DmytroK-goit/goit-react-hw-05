@@ -50,7 +50,7 @@ const getMovieDetails = async (movieId) => {
 const getMovieCredits = async (movieId) => {
   try {
     const response = await axios.get(
-      `movie/${movieId}/credits?language=en-US'`,
+      `movie/${movieId}/credits?language=en-US`,
       options
     );
     return response.data;
@@ -63,7 +63,7 @@ const getMovieCredits = async (movieId) => {
 const getMovieReviews = async (movieId) => {
   try {
     const response = await axios.get(
-      `movie/${movieId}/reviews?language=en-US'`,
+      `movie/${movieId}/reviews?language=en-US`,
       options
     );
     return response.data;

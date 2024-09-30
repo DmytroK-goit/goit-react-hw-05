@@ -3,10 +3,12 @@ import { getMovieReviews } from "../../components/api/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import { useParams } from "react-router-dom";
 
-const MovieReview = ({ movieId }) => {
+const MovieReview = () => {
   const [movieReview, setMovieReview] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { movieId } = useParams();
 
   useEffect(() => {
     const fetchMovieReview = async () => {
