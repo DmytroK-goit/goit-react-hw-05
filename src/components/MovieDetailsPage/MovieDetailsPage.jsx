@@ -11,9 +11,7 @@ import { getMovieDetails } from "../../components/api/api";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import s from "../MovieDetailsPage/MovieDetailsPage.module.css";
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReview from "../MovieReviews/MovieReviews";
+import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -51,10 +49,9 @@ const MovieDetailsPage = () => {
     <div>
       <div className={s.allinfo}>
         <div className={s.fblock}>
-          <button className={s.btn} onClick={() => navigate(from)}>
+          <Link className={s.btn} to={from}>
             Назад
-          </button>
-
+          </Link>
           <img
             src={`https://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path}`}
             alt="Movie poster"
@@ -82,7 +79,6 @@ const MovieDetailsPage = () => {
           <li>
             <NavLink
               to="cast"
-              state={{ location }}
               className={({ isActive }) => (isActive ? s.activeLink : "")}
             >
               Cast
@@ -91,7 +87,6 @@ const MovieDetailsPage = () => {
           <li>
             <NavLink
               to="reviews"
-              state={{ location }}
               className={({ isActive }) => (isActive ? s.activeLink : "")}
             >
               Reviews

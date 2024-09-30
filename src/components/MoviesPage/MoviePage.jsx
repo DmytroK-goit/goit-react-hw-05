@@ -14,7 +14,13 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
   const location = useLocation();
-  const from = location.state?.from || "/";
+
+  useEffect(() => {
+    const savedQuery = searchParams.get("query");
+    if (savedQuery) {
+      fetchMovies(savedQuery);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (evt) => {
     setQuery(evt.target.value);
@@ -28,7 +34,6 @@ const MoviesPage = () => {
     }
 
     setSearchParams({ query });
-    fetchMovies(query);
   };
 
   const fetchMovies = async (searchQuery) => {
@@ -64,11 +69,9 @@ const MoviesPage = () => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        searchMovies.length > 0 && (
-          <Suspense>
-            <MovieList movies={searchMovies} state={{ from: location.state }} />
-          </Suspense>
-        )
+        <Suspense>
+          <MovieList movies={searchMovies} location={location} />
+        </Suspense>
       )}
       <ToastContainer
         position="top-right"

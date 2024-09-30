@@ -9,6 +9,7 @@ const MovieCast = () => {
   const [movieCredits, setMovieCredits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieCredits = async () => {

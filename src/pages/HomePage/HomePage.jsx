@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import { fetchTrending } from "../../components/api/api";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const MovieList = lazy(() => import("../../components/MovieList/MovieList"));
@@ -35,4 +35,5 @@ const HomePage = () => {
     </div>
   );
 };
+
 export default HomePage;
