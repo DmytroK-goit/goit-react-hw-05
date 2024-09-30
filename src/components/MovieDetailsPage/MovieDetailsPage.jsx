@@ -21,7 +21,7 @@ const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state.from || "/movies";
+  const from = location.state?.from || "/";
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -82,7 +82,7 @@ const MovieDetailsPage = () => {
           <li>
             <NavLink
               to="cast"
-              state={{ from }}
+              state={{ location }}
               className={({ isActive }) => (isActive ? s.activeLink : "")}
             >
               Cast
@@ -91,7 +91,7 @@ const MovieDetailsPage = () => {
           <li>
             <NavLink
               to="reviews"
-              state={{ from }}
+              state={{ location }}
               className={({ isActive }) => (isActive ? s.activeLink : "")}
             >
               Reviews

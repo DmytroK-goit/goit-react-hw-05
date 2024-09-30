@@ -14,6 +14,7 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
   const location = useLocation();
+  const from = location.state?.from || "/";
 
   const handleInputChange = (evt) => {
     setQuery(evt.target.value);
@@ -65,7 +66,7 @@ const MoviesPage = () => {
       ) : (
         searchMovies.length > 0 && (
           <Suspense>
-            <MovieList movies={searchMovies} location={location} />
+            <MovieList movies={searchMovies} state={{ from: location.state }} />
           </Suspense>
         )
       )}
