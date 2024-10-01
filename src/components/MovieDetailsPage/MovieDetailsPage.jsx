@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   useParams,
   useNavigate,
@@ -17,9 +17,15 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const goBackBtn = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from || "/";
+
+  useEffect(() => {
+    if (!goBackBtn.current) {
+      goBackBtn.current = location.state?.from || "/";
+    }
+  }, [location.state]);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -49,7 +55,7 @@ const MovieDetailsPage = () => {
     <div>
       <div className={s.allinfo}>
         <div className={s.fblock}>
-          <Link className={s.btn} to={from}>
+          <Link className={s.btn} to={goBackBtn.current}>
             Назад
           </Link>
           <img
