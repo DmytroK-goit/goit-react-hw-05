@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   useParams,
   useNavigate,
@@ -18,7 +18,6 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const goBackBtn = useRef();
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <div className={s.allinfo}>
+      <div className="flex flex-col gap-5 p-1 sm:flex-col md:gap-10 md:flex-row">
         <div className={s.fblock}>
           <Link className={s.btn} to={goBackBtn.current}>
             Назад
@@ -64,13 +63,13 @@ const MovieDetailsPage = () => {
             width={400}
           />
         </div>
-        <div className={s.sblock}>
+        <div className="sm:text- w-3/4 flex flex-col">
           <h2>{movieDetails.title}</h2>
           <p className={s.title}>Homepage</p>
           <p>{movieDetails.homepage}</p>
           <p>{`UserScore: ${movieDetails.vote_average * 10}%`}</p>
           <p className={s.title}>Overview</p>
-          <p>{movieDetails.overview}</p>
+          <p className="w-4/5">{movieDetails.overview}</p>
           <p className={s.title}>Genres</p>
           <ul className={s.genres}>
             {movieDetails.genres.map((genre) => (

@@ -33,7 +33,7 @@ const MovieCast = () => {
       ) : movieCredits.length === 0 ? (
         <p>No cast information found.</p>
       ) : (
-        <ul className={s.cast}>
+        <ul className="grid gap-4 justify-between content-center p-20 sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {movieCredits.map((credit) => (
             <li key={credit.cast_id}>
               <img

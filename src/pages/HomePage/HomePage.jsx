@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { fetchTrending } from "../../components/api/api";
 import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";

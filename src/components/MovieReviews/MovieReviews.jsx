@@ -33,7 +33,7 @@ const MovieReview = () => {
       ) : movieReview.length === 0 ? (
         <p>No reviews found.</p>
       ) : (
-        <ul>
+        <ul className="w-4/5 p-5">
           {movieReview.map((rev) => (
             <li key={rev.id}>
               <p>
