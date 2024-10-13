@@ -23,7 +23,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full">
       <Suspense>
         <MovieList movies={movies} location={location} />
       </Suspense>

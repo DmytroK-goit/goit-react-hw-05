@@ -4,7 +4,6 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import s from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -53,18 +52,21 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <form className={s.form} onSubmit={handleSubmit}>
+      {/* <form className="flex flex-col items-center " onSubmit={handleSubmit}>
         <input
-          className={s.input}
+          className="w-full sm:w-4/5 lg:w-3/5 p-2 mb-4 border border-gray-300 rounded"
           type="text"
           placeholder="Search movies..."
           value={query}
           onChange={handleInputChange}
         />
-        <button className={s.btn} type="submit">
+        <button
+          className="w-full sm:w-4/5 lg:w-3/5 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+          type="submit"
+        >
           Search
         </button>
-      </form>
+      </form> */}
 
       {loading ? (
         <LoadingSpinner />
