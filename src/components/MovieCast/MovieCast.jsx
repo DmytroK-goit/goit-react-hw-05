@@ -37,11 +37,11 @@ const MovieCast = () => {
         <ul className="grid gap-8 justify-between content-center sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {movieCredits.map((credit) => (
             <li
-              className="max-w-md cursor-pointer p-5 rounded-3xl shadow-lg bg-emerald-200 border-2 border-solid border-gray-500 transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-emerald-500"
+              className="max-w-[250px] xs:max-w-[400px] cursor-pointer p-5 rounded-3xl shadow-lg bg-emerald-200 border-2 border-solid border-gray-500 transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-emerald-500"
               key={credit.cast_id}
             >
               <img
-                className="rounded-t-md"
+                className="rounded-t "
                 src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
                 alt={credit.original_name}
               />
