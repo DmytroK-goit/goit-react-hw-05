@@ -52,7 +52,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <div className="flex flex-col gap-5 p-1 sm:flex-col md:gap-10 md:flex-row">
+      <div className="flex pt-[220px] flex-col md:pt-[120px] sm:pt-[250px] gap-5 p-1 sm:flex-col md:gap-10 md:flex-row">
         <div className={s.fblock}>
           <Link className={s.btn} to={goBackBtn.current}>
             Назад

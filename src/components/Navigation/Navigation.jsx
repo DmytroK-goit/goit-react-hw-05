@@ -6,7 +6,7 @@ const Navigation = () => {
     return clsx(s.link, isActive && s.activeLink);
   };
   return (
-    <div className="w-full flex flex-col gap-10 p-5  bg-teal-500 md:flex-row p-10 justify-between ">
+    <div className="w-full p-5 flex flex-col gap-10 fixed z-50 bg-teal-500 md:flex-row justify-between ">
       <div className="flex gap-20">
         <NavLink className={buildLinkClass} to="/">
           Home

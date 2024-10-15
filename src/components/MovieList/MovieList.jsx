@@ -5,7 +5,7 @@ const MovieList = ({ movies }) => {
   console.log(movies);
 
   return (
-    <ul className="grid gap-4 justify-between content-center p-20 sm:grid-cols-1 p-5 md:grid-cols-2 p-10 lg:grid-cols-3 p-15 xl:grid-cols-4 2xl:grid-cols-4">
+    <ul className="grid gap-4 p-5 sm:pt-[250px] justify-between content-center sm:grid-cols-1 sm:p-5 md:grid-cols-2 md:p-10 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 pt-[220px] md:pt-[120px] ">
       {movies.map((movie) => (
         <li
           className="max-w-md bg-slate-600 border-2 border-solid border-gray-500 rounded-md shadow-md transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-lg hover:shadow-slate-600"

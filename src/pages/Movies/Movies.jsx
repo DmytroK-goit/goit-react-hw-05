@@ -52,22 +52,6 @@ const MoviesPage = () => {
 
   return (
     <div>
-      {/* <form className="flex flex-col items-center " onSubmit={handleSubmit}>
-        <input
-          className="w-full sm:w-4/5 lg:w-3/5 p-2 mb-4 border border-gray-300 rounded"
-          type="text"
-          placeholder="Search movies..."
-          value={query}
-          onChange={handleInputChange}
-        />
-        <button
-          className="w-full sm:w-4/5 lg:w-3/5 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
-          type="submit"
-        >
-          Search
-        </button>
-      </form> */}
-
       {loading ? (
         <LoadingSpinner />
       ) : (

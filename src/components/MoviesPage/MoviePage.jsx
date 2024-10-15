@@ -51,7 +51,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="pt-[220px] sm:pt-[250px] md:pt-[120px]">
       <form className="flex flex-col items-center " onSubmit={handleSubmit}>
         <input
           className="w-3/4 sm:w-4/5 lg:w-3/5 p-2 mb-4 border border-gray-300 rounded"
