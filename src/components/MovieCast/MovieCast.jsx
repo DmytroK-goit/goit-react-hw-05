@@ -16,6 +16,7 @@ const MovieCast = () => {
       try {
         const dataCredits = await getMovieCredits(movieId);
         setMovieCredits(dataCredits.cast);
+        console.log(dataCredits);
       } catch (error) {
         toast.error(`Сталася помилка: ${error.message}`);
       } finally {
@@ -33,10 +34,10 @@ const MovieCast = () => {
       ) : movieCredits.length === 0 ? (
         <p>No cast information found.</p>
       ) : (
-        <ul className="grid gap-8 justify-between content-center p-20 sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+        <ul className="grid gap-8 justify-between content-center sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {movieCredits.map((credit) => (
             <li
-              className="max-w-md cursor-pointer p-5 rounded-md shadow-lg bg-emerald-200 border-2 border-solid border-gray-500 transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-emerald-500"
+              className="max-w-md cursor-pointer p-5 rounded-3xl shadow-lg bg-emerald-200 border-2 border-solid border-gray-500 transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-emerald-500"
               key={credit.cast_id}
             >
               <img
