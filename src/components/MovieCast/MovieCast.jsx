@@ -34,7 +34,7 @@ const MovieCast = () => {
       ) : movieCredits.length === 0 ? (
         <p>No cast information found.</p>
       ) : (
-        <ul className="grid gap-8 justify-between content-center sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+        <ul className="grid gap-8 justify-between content-center sm:grid-cols-2 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6">
           {movieCredits.map((credit) => (
             <li
               className="max-w-[250px] xs:max-w-[400px] cursor-pointer p-5 rounded-3xl shadow-lg bg-emerald-200 border-2 border-solid border-gray-500 transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-emerald-500"
