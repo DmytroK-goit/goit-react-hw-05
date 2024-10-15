@@ -33,16 +33,23 @@ const MovieCast = () => {
       ) : movieCredits.length === 0 ? (
         <p>No cast information found.</p>
       ) : (
-        <ul className="grid gap-4 justify-between content-center p-20 sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+        <ul className="grid gap-8 justify-between content-center p-20 sm:grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {movieCredits.map((credit) => (
-            <li key={credit.cast_id}>
+            <li
+              className="max-w-md cursor-pointer p-5 rounded-md shadow-lg bg-emerald-200 border-2 border-solid border-gray-500 transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-emerald-500"
+              key={credit.cast_id}
+            >
               <img
+                className="rounded-t-md"
                 src={`https://image.tmdb.org/t/p/w500/${credit.profile_path}`}
                 alt={credit.original_name}
-                width={300}
               />
-              <p>{credit.original_name}</p>
-              <p>{credit.popularity}%</p>
+              <p className="text-slate-950 sm:text-sm xl:text-xl">
+                {credit.original_name}
+              </p>
+              <p className="text-slate-950 sm:text-sm xl:text-xl">
+                {credit.popularity}%
+              </p>
             </li>
           ))}
         </ul>

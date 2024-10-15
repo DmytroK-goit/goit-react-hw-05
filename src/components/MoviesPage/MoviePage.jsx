@@ -61,7 +61,7 @@ const MoviesPage = () => {
           onChange={handleInputChange}
         />
         <button
-          className="w-1/3 sm:w-1/4 lg:w-1/4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+          className="w-1/3 sm:w-1/4 lg:w-1/5 p-2 bg-blue-500 text-white rounded transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-500 "
           type="submit"
         >
           Search
